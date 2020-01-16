@@ -431,3 +431,407 @@ class Department5 {
   
   // accountingCopy.describe();
   
+
+
+
+
+
+
+  /** Abstract Class */
+
+  abstract class Department7 {
+    static fiscalYear = 2020;
+    // private readonly id: string;
+    // private name: string;
+    protected employees: string[] = [];
+  
+    constructor(protected readonly id: string, public name: string) {
+      // this.id = id;
+      // this.name = n;
+      // console.log(Department.fiscalYear);
+    }
+  
+    static createEmployee(name: string) {
+      return { name: name };
+    }
+  
+    abstract describe(this: Department7): void;
+  
+    addEmployee(employee: string) {
+      // validation etc
+      // this.id = 'd2';
+      this.employees.push(employee);
+    }
+  
+    printEmployeeInformation() {
+      console.log(this.employees.length);
+      console.log(this.employees);
+    }
+  }
+  
+  class ITDepartment4 extends Department7 {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+      super(id, 'IT');
+      this.admins = admins;
+    }
+  
+    describe() {
+      console.log('IT Department - ID: ' + this.id);
+    }
+  }
+  
+  class AccountingDepartment3 extends Department7 {
+    private lastReport: string;
+  
+    get mostRecentReport() {
+      if (this.lastReport) {
+        return this.lastReport;
+      }
+      throw new Error('No report found.');
+    }
+  
+    set mostRecentReport(value: string) {
+      if (!value) {
+        throw new Error('Please pass in a valid value!');
+      }
+      this.addReport(value);
+    }
+  
+    constructor(id: string, private reports: string[]) {
+      super(id, 'Accounting');
+      this.lastReport = reports[0];
+    }
+  
+    describe() {
+      console.log('Accounting Department - ID: ' + this.id);
+    }
+  
+    addEmployee(name: string) {
+      if (name === 'Max') {
+        return;
+      }
+      this.employees.push(name);
+    }
+  
+    addReport(text: string) {
+      this.reports.push(text);
+      this.lastReport = text;
+    }
+  
+    printReports() {
+      console.log(this.reports);
+    }
+  }
+  
+  const employee1 = Department7.createEmployee('Max');
+  console.log(employee1, Department7.fiscalYear);
+  
+  const it5 = new ITDepartment4('d1', ['Max']);
+  
+  it5.addEmployee('Max');
+  it5.addEmployee('Manu');
+  
+  // it.employees[2] = 'Anna';
+  
+  it5.describe();
+  it5.name = 'NEW NAME';
+  it5.printEmployeeInformation();
+  
+  console.log(it);
+  
+  const accounting8 = new AccountingDepartment3('d2', []);
+  
+  accounting8.mostRecentReport = 'Year End Report';
+  accounting8.addReport('Something went wrong...');
+  console.log(accounting8.mostRecentReport);
+  
+  accounting8.addEmployee('Max');
+  accounting8.addEmployee('Manu');
+  
+  // accounting.printReports();
+  // accounting.printEmployeeInformation();
+  accounting8.describe();
+  
+  // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+  
+  // accountingCopy.describe();
+  
+
+
+
+
+  /** private constructors */
+
+  abstract class Department8 {
+    static fiscalYear = 2020;
+    // private readonly id: string;
+    // private name: string;
+    protected employees: string[] = [];
+  
+    constructor(protected readonly id: string, public name: string) {
+      // this.id = id;
+      // this.name = n;
+      // console.log(Department.fiscalYear);
+    }
+  
+    static createEmployee(name: string) {
+      return { name: name };
+    }
+  
+    abstract describe(this: Department8): void;
+  
+    addEmployee(employee: string) {
+      // validation etc
+      // this.id = 'd2';
+      this.employees.push(employee);
+    }
+  
+    printEmployeeInformation() {
+      console.log(this.employees.length);
+      console.log(this.employees);
+    }
+  }
+  
+  class ITDepartment5 extends Department8 {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+      super(id, 'IT');
+      this.admins = admins;
+    }
+  
+    describe() {
+      console.log('IT Department - ID: ' + this.id);
+    }
+  }
+  
+  class AccountingDepartment4 extends Department8 {
+    private lastReport: string;
+    private static instance: AccountingDepartment4;
+  
+    get mostRecentReport() {
+      if (this.lastReport) {
+        return this.lastReport;
+      }
+      throw new Error('No report found.');
+    }
+  
+    set mostRecentReport(value: string) {
+      if (!value) {
+        throw new Error('Please pass in a valid value!');
+      }
+      this.addReport(value);
+    }
+  
+    private constructor(id: string, private reports: string[]) {
+      super(id, 'Accounting');
+      this.lastReport = reports[0];
+    }
+  
+    static getInstance() {
+      if (AccountingDepartment4.instance) {
+        return this.instance;
+      }
+      this.instance = new AccountingDepartment4('d2', []);
+      return this.instance;
+    }
+  
+    describe() {
+      console.log('Accounting Department - ID: ' + this.id);
+    }
+  
+    addEmployee(name: string) {
+      if (name === 'Max') {
+        return;
+      }
+      this.employees.push(name);
+    }
+  
+    addReport(text: string) {
+      this.reports.push(text);
+      this.lastReport = text;
+    }
+  
+    printReports() {
+      console.log(this.reports);
+    }
+  }
+  
+  const employee12 = Department8.createEmployee('Max');
+  console.log(employee1, Department8.fiscalYear);
+  
+  const it8 = new ITDepartment5('d1', ['Max']);
+  
+  it8.addEmployee('Max');
+  it8.addEmployee('Manu');
+  
+  // it.employees[2] = 'Anna';
+  
+  it8.describe();
+  it8.name = 'NEW NAME';
+  it8.printEmployeeInformation();
+  
+  console.log(it8);
+  
+  // const accounting = new AccountingDepartment('d2', []);
+  const accounting9 = AccountingDepartment4.getInstance();
+  const accounting29 = AccountingDepartment4.getInstance();
+  
+  console.log(accounting9, accounting29);
+  
+  accounting9.mostRecentReport = 'Year End Report';
+  accounting9.addReport('Something went wrong...');
+  console.log(accounting9.mostRecentReport);
+  
+  accounting9.addEmployee('Max');
+  accounting9.addEmployee('Manu');
+  
+  // accounting.printReports();
+  // accounting.printEmployeeInformation();
+  accounting9.describe();
+  
+  // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+  
+  // accountingCopy.describe();
+  
+
+
+
+
+  /** Interfaces */
+
+  interface Person {
+    name: string;
+    age: number;
+  
+    greet(phrase: string): void;
+  }
+  
+  let user1: Person;
+  
+  user1 = {
+    name: 'Max',
+    age: 30,
+    greet(phrase: string) {
+      console.log(phrase + ' ' + this.name);
+    }
+  };
+  
+  user1.greet('Hi there - I am');
+
+
+
+
+  
+  
+  /** Implementing Interfaces */
+
+  interface Greetable {
+    name: string;
+  
+    greet(phrase: string): void;
+  }
+  
+  class Person implements Greetable {
+    name: string;
+    age = 30;
+  
+    constructor(n: string) {
+      this.name = n;
+    }
+  
+    greet(phrase: string) {
+      console.log(phrase + ' ' + this.name);
+    }
+  }
+  
+  let user12: Greetable;
+  
+  user12 = new Person('Max');
+  
+  user12.greet('Hi there - I am');
+  console.log(user12);
+
+
+
+
+
+  /** Interface Inheritance */
+
+  interface Named {
+    readonly name: string;
+  }
+  
+  interface Greetable extends Named {
+    greet(phrase: string): void;
+  }
+  
+  class Person1 implements Greetable {
+    name: string;
+    age = 30;
+  
+    constructor(n: string) {
+      this.name = n;
+    }
+  
+    greet(phrase: string) {
+      console.log(phrase + ' ' + this.name);
+    }
+  }
+  
+  let user13: Greetable;
+  
+  user13 = new Person1('Max');
+  // user1.name = 'Manu';
+  
+  user13.greet('Hi there - I am');
+  console.log(user13);
+  
+
+
+
+
+  
+
+  /** Interface Functions */
+
+  // type AddFn = (a: number, b: number) => number;
+interface AddFn {
+    (a: number, b: number): number;
+  }
+  
+  let add: AddFn;
+  
+  add = (n1: number, n2: number) => {
+    return n1 + n2;
+  };
+  
+  interface Named {
+    readonly name: string;
+  }
+  
+  interface Greetable extends Named {
+    greet(phrase: string): void;
+  }
+  
+  class Person2 implements Greetable {
+    name: string;
+    age = 30;
+  
+    constructor(n: string) {
+      this.name = n;
+    }
+  
+    greet(phrase: string) {
+      console.log(phrase + ' ' + this.name);
+    }
+  }
+  
+  let user11: Greetable;
+  
+  user11 = new Person2('Max');
+  // user1.name = 'Manu';
+  
+  user11.greet('Hi there - I am');
+  console.log(user11);
+  
