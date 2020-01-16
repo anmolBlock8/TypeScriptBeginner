@@ -384,12 +384,12 @@ console.log(combinedNames2);
   /** Unknown and never type */
 
   let userInput: unknown;
-  let userName: string;
+  let userName1: string;
 
   userInput = 5;
   userInput = 'Max';
   if (typeof userInput === 'string') {
-    userName = userInput;
+    userName1 = userInput;
   }
 
   function generateError(message: string, code: number): never {
@@ -398,3 +398,99 @@ console.log(combinedNames2);
   }
 
   generateError('An error occurred!', 500);
+
+
+
+
+  /** Arrow Function */
+
+const add6 = (a: number, b: number) => a + b;
+
+const printOutput: (a: number | string) => void = output => console.log(output);
+
+const button = document.querySelector('button');
+
+if (button) {
+  button.addEventListener('click', event => console.log(event));
+}
+
+printOutput(add6(5, 2));
+
+
+
+
+
+
+/** Spread Operator */
+
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking'];
+
+activeHobbies.push(...hobbies);
+
+const person6 = {
+  name: 'Max',
+  age: 30
+};
+
+const copiedPerson = { ...person6 };
+
+
+
+
+/** Rest Operator */
+
+const hobbies1 = ['Sports', 'Cooking'];
+const activeHobbies1 = ['Hiking'];
+
+activeHobbies1.push(...hobbies1);
+
+const person7 = {
+  name: 'Max',
+  age: 30
+};
+
+const copiedPerson1 = { ...person7 };
+
+const add7 = (...numbers: number[]) => {
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+const addedNumbers = add7(5, 10, 2, 3.7);
+console.log(addedNumbers);
+
+
+
+
+/** Object Destructing */
+
+const hobbies2 = ['Sports', 'Cooking'];
+const activeHobbies2 = ['Hiking'];
+
+activeHobbies2.push(...hobbies2);
+
+const person8 = {
+  firstName: 'Max',
+  age: 30
+};
+
+const copiedPerson2 = { ...person8 };
+
+const add8 = (...numbers: number[]) => {
+  return numbers.reduce((curResult, curValue) => {
+    return curResult + curValue;
+  }, 0);
+};
+
+const addedNumbers2 = add8(5, 10, 2, 3.7);
+console.log(addedNumbers2);
+
+const [hobby1, hobby2, ...remainingHobbies] = hobbies2;
+
+console.log(hobbies2, hobby1, hobby2);
+
+const { firstName: userName, age } = person8;
+
+console.log(userName, age, person2);
