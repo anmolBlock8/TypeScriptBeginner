@@ -791,7 +791,7 @@ class Department5 {
 
 
 
-  
+
 
   /** Interface Functions */
 
@@ -834,4 +834,3 @@ interface AddFn {
   
   user11.greet('Hi there - I am');
   console.log(user11);
-  

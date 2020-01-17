@@ -579,3 +579,37 @@ var user12;
 user12 = new Person('Max');
 user12.greet('Hi there - I am');
 console.log(user12);
+var Person1 = /** @class */ (function () {
+    function Person1(n) {
+        this.age = 30;
+        this.name = n;
+    }
+    Person1.prototype.greet = function (phrase) {
+        console.log(phrase + ' ' + this.name);
+    };
+    return Person1;
+}());
+var user13;
+user13 = new Person1('Max');
+// user1.name = 'Manu';
+user13.greet('Hi there - I am');
+console.log(user13);
+var add;
+add = function (n1, n2) {
+    return n1 + n2;
+};
+var Person2 = /** @class */ (function () {
+    function Person2(n) {
+        this.age = 30;
+        this.name = n;
+    }
+    Person2.prototype.greet = function (phrase) {
+        console.log(phrase + ' ' + this.name);
+    };
+    return Person2;
+}());
+var user11;
+user11 = new Person2('Max');
+// user1.name = 'Manu';
+user11.greet('Hi there - I am');
+console.log(user11);
