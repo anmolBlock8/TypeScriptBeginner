@@ -5,6 +5,9 @@ var e1 = {
     privileges: ['create-server'],
     startDate: new Date()
 };
+
+
+
 /** Type Guards */
 function add1(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
@@ -63,6 +66,10 @@ function moveAnimal(animal) {
     console.log('Moving at speed: ' + speed);
 }
 moveAnimal({ type: 'bird', flyingSpeed: 10 });
+
+
+
+
 /** Type Castinng */
 // const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
 var userInputElement = document.getElementById('user-input');
@@ -81,6 +88,11 @@ function add(a, b) {
 }
 var result = add('Max', ' Schwarz');
 result.split(' ');
+
+
+
+
+
 /** Optional chaining and nullish coalescing */
 var fetchedUserData = {
     id: 'u1',
